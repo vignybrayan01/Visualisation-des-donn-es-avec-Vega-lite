@@ -1,0 +1,137 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "data": {"url": "https://www.orkidees.com/share/data_vega_A23.csv"},
+  "width": 600,
+   "height":600,
+
+
+
+  "layer":[
+    
+    
+    // representaion temperature
+        {
+
+          "mark":"bar",
+          "encoding":{
+            "x":{"field":"dt", 
+                "type":"ordinal",
+                "timeUnit": "month"
+                
+                },
+
+            "y":{"field":"count", 
+                "type":"quantitative", 
+                "aggregate": "count",
+                "axis":{"tickCount":11}
+                },
+
+            "color": {"field": "temps",
+                      "type": "nominal",
+                      "title": "Légende",
+                      "scale": {"domain": ["sun", "cloudy", "drizzle", "rain","","température min","température max","vent(vitesse moy)","pluie(précipitation)"],"range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4","","#00FF00","#FF0000","#675193","#000000"]
+                      
+                              }
+                }    
+          }
+      },
+
+
+// representaion minTp
+      {
+        "mark":{
+                  "type": "line",
+                  "point": true
+                },
+          "encoding":{
+            "x":{"field":"dt", 
+                "type":"temporal",
+                "timeUnit": "month"
+                },
+
+            "y":{"field":"minTp", 
+                "type":"quantitative",
+                "aggregate":"median"
+                },
+
+            "color":{"value":"green"}
+
+              }
+        },
+
+// representaion maxTp
+
+        {
+        "mark":{
+                  "type": "line",
+                  "point": true
+                },
+          "encoding":{
+            "x":{"field":"dt", 
+                "type":"temporal",
+                "timeUnit": "month"
+                },
+
+            "y":{"field":"maxTp", 
+                "type":"quantitative",
+                "aggregate":"median"
+                },
+
+            "color":{"value":"red"}
+
+          }
+      },
+
+
+      // representaion vent
+
+      {
+        "mark":{
+                  "type": "line",
+                  "point": true
+                },
+          "encoding":{
+            "x":{"field":"dt", 
+                "type":"temporal",
+                "timeUnit": "month"
+                },
+
+            "y":{"field":"vent", 
+                "type":"quantitative",
+                "aggregate":"median"
+                },
+
+            "color":{"value":"purple"}
+
+                }
+      },
+
+      // representaion pluie
+
+      {
+        "mark":{
+                  "type": "line",
+                  "point": true
+                },
+          "encoding":{
+            "x":{"field":"dt", 
+                "type":"temporal",
+                "timeUnit": "month"
+                },
+
+            "y":{"field":"pluie", 
+                "type":"quantitative",
+                "aggregate":"median"
+                },
+
+            "color":{"value":"black"}
+
+                }
+      }
+    
+
+    
+  
+ ]
+}
